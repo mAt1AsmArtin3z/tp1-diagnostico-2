@@ -1,0 +1,73 @@
+﻿a)
+CREATE TABLE MARCAS (
+IdMarca SMALLINT NOT NULL DEFAULT 1,
+NombreMarca CHAR(10) NOT NULL,
+NombreCiudad CHAR(60) NOT NULL,
+PRIMARY KEY (idMarca))
+b)
+CREATE TABLE COCHES (
+codcoche SMALLINT NOT NULL,
+nombre CHAR(15) NOT NULL,
+modelo CHAR(10),
+PRIMARY KEY (codcoche))
+c)
+CREATE TABLE MARCO (
+IdMarca SMALLINT NOT NULL,
+codcoche SMALLINT NOT NULL,
+PRIMARY KEY (cifm,codcoche),
+FOREIGN KEY (cifm) REFERENCES MARCA,
+FOREIGN KEY (codcoche) REFERENCES COCHE)
+d)
+INSERT INTO MARCAS VALUES (1,'vw','Mar del Plata')
+INSERT INTO MARCAS VALUES (2,'renault','Rosario')
+INSERT INTO MARCAS VALUES (3,'fiat','Cordoba')
+INSERT INTO MARCAS VALUES (4,'ford','Neuquen')
+e)
+SELECT * FROM MARCAS
+f)
+SELECT nombre, ciudad FROM MARCAS
+g)
+select nombre,ciudad from MARCAS where IdMarca = 2
+h)
+select NombreMarca,ciudad from marca
+where ciudad = 'Neuquen'
+i)
+select nombre,ciudad
+from marcas
+where ciudad LIKE 'S%'
+j)
+update marcas
+set ciudad = 'Nuequen'
+where ciudad = 'Jujuy'
+
+
+
+
+a-Empieza creando la tala marcas, despues define las columnas idmarca como un smallint  un int pero que no ocupa tanto espacio que no es nullo, nombremarca y nombreciudad las define como char no nulos y al final define idmarca como una primary key. (los numeros dentro del parentesis indican el maximo de caracteres posibles para escribir en la columna)
+
+
+b-Empieza creando la tabla coches, tiene 3 columnas: codcoche, la cual es smallint no nullo, nombre, la cual es de tipo char no nulo y modelo, la cual es de char. Finalmente define a codcoche como primary key
+
+
+c-Crea la tabla MARCO con dos columnas: IdMarca y codcoche. Define una clave primaria compuesta usando las columnas cifm y codcoche, establece dos claves externas: una para la columna cifm, referenciando la tabla MARCA, y otra para la columna codcoche, referenciando la tabla coche. hay un error, cifm se deberia ser IdMarca.
+
+
+d-La consulta interta los valores establecidos en la tabla marcas, la del punto a, le mete el valor de IdMarca NombreMarca NombreCiudad a 4 columnas
+
+
+e-muestra toda la tabla llamada marcas
+
+
+f-muestra solo el nombre y la ciudad de la tabla marcas, aunque deberia ser nombremarca y nombreciudad.
+
+
+g-muestra el nombre, ciudad de la tabla marcas pero solo la que el valor de idmarca sea 2
+
+
+h-muestra el nombremarca, ciudad de la tabla marca pero solo donde la ciudad tenga el nombre de neuquen
+
+
+i-muestra el nombre, ciudad de la tabla MARCAS pero solo va a mostrar en columna de ciudad donde haya una palabra que empiece por la letra S
+
+
+j-en la tabla marcas, se actualiza el valor de ciudad Neuquen por Jujuy
